@@ -19,6 +19,7 @@ body {
     background-color: white;
     font-family: var(--font-sans);
 }
+
 main {
     min-height: 200vh;
     padding-top: 2.5rem;
@@ -160,7 +161,7 @@ form {
 
 .resume-section {
     display: flex;
-    gap: 3rem;
+    gap: 6rem;
     flex-wrap: wrap;
     max-width: 1850px;
     justify-content: center;

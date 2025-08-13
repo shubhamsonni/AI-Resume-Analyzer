@@ -1,7 +1,6 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { fileURLToPath } from "url";
-import { formatSize } from "~/lib/utils";
+import { formatSize } from "../lib/utils";
 
 interface FileUploaderProps {
   onFileSelect?: (file: File | null) => void;
@@ -13,11 +12,11 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
       const file = acceptedFiles[0] || null;
 
       onFileSelect?.(file);
-      // Do something with the files
     },
     [onFileSelect]
   );
-  const maxFileSize = 20 * 1024 * 1024;
+
+  const maxFileSize = 20 * 1024 * 1024; // 20MB in bytes
 
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone({
@@ -33,6 +32,7 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
     <div className="w-full gradient-border">
       <div {...getRootProps()}>
         <input {...getInputProps()} />
+
         <div className="space-y-4 cursor-pointer">
           {file ? (
             <div
@@ -42,7 +42,7 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
               <img src="/images/pdf.png" alt="pdf" className="size-10" />
               <div className="flex items-center space-x-3">
                 <div>
-                  <p className="text-sm  text-gray-700 font-medium truncate max-w-xs">
+                  <p className="text-sm font-medium text-gray-700 truncate max-w-xs">
                     {file.name}
                   </p>
                   <p className="text-sm text-gray-500">
@@ -66,10 +66,10 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
               </div>
               <p className="text-lg text-gray-500">
                 <span className="font-semibold">Click to upload</span> or drag
-                &drop
+                and drop
               </p>
               <p className="text-lg text-gray-500">
-                PDF (max{formatSize(maxFileSize)})
+                PDF (max {formatSize(maxFileSize)})
               </p>
             </div>
           )}
@@ -78,5 +78,4 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
     </div>
   );
 };
-
 export default FileUploader;
