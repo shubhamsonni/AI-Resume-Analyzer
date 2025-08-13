@@ -59,7 +59,7 @@ export default function Home() {
         )}
 
         {!loadingResumes && resumes.length > 0 && (
-          <div className="resumes-section">
+          <div className="resumes-section flex flex-wrap justify-center gap-6">
             {resumes.map((resume) => (
               <ResumeCard key={resume.id} resume={resume} />
             ))}

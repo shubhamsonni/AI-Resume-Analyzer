@@ -164,7 +164,6 @@ form {
     gap: 6rem;
     flex-wrap: wrap;
     max-width: 1850px;
-    justify-content: center;
 }
 
 .resume-card {
